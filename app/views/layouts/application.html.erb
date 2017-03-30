@@ -13,6 +13,16 @@
   </head>
 
   <body>
+    <%= render 'layouts/navigation' %>
+    <% unless params[:action] == 'home' %>
+      <div class="container">
+    <% end %>
+
     <%= yield %>
+
+    <% unless params[:action] == 'home' %>
+      </div>
+    <% end %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
