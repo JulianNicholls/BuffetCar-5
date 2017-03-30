@@ -1,3 +1,33 @@
+$navbar-default-bg: #1A237E;  // Indigo 900
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+footer {
+  margin-top: 2em;
+  padding: 0.5em 1em;
+  background: $navbar-default-bg;
+  color: #fff;
+}
+
+#jumbo-home {
+  background: asset-url('white-train.png');
+  background-size: cover;
+
+  h1, h1 small {
+    color: $navbar-default-bg;
+  }
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+
+  &:hover {
+    color: #C5CAE9;   // Indigo 100
+  }
+}
