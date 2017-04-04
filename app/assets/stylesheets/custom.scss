@@ -9,6 +9,14 @@ footer {
   padding: 0.5em 1em;
   background: $footer-bg;
   color: #fff;
+
+  a {
+    color: #fff;
+  }
+
+  nav {
+    color: #fff;
+  }
 }
 
 #jumbo-home {
@@ -17,6 +25,10 @@ footer {
 
   h1, h1 small {
     color: $navbar-default-bg;
+  }
+
+  a {
+    margin-top: 2em;
   }
 }
 
