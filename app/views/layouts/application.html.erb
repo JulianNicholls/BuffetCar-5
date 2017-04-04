@@ -14,15 +14,15 @@
 
   <body>
     <%= render 'layouts/navigation' %>
-    <% unless params[:action] == 'home' %>
+    <% if params[:action] == 'home' %>
+      <div class="container-fluid">
+    <% else %>
       <div class="container">
     <% end %>
 
     <%= yield %>
 
-    <% unless params[:action] == 'home' %>
-      </div>
-    <% end %>
+    </div>  <!-- End of container or container-fluid  -->
     <%= render 'layouts/footer' %>
   </body>
 </html>
