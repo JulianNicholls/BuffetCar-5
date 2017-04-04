@@ -9,6 +9,13 @@ footer {
   padding: 0.5em 1em;
   background: $footer-bg;
   color: #fff;
+  position: relative;
+  overflow: auto;
+
+  small {
+    font-size: 95%;
+    float: left;
+  }
 
   a {
     color: #fff;
@@ -16,6 +23,16 @@ footer {
 
   nav {
     color: #fff;
+
+    ul {
+      float: right;
+      list-style: none;
+
+      li {
+        float: left;
+        margin-left: 15px;
+      }
+    }
   }
 }
 
