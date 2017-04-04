@@ -1,6 +1,8 @@
 class Chef < ApplicationRecord
   before_save { self.email.downcase! }
 
+  has_many :recipes
+
   # A verrry minimal EMAIL Regex
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
