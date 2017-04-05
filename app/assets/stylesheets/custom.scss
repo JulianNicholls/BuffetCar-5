@@ -1,6 +1,7 @@
-$navbar-default-bg: #1A237E;  // Indigo 900
 $footer-bg:         #5C6BC0;  // Indigo 400
+$button-colour:     #3949AB;  // Indigo 600
 $link-colour:       #303F9F;  // Indigo 700
+$navbar-default-bg: #1A237E;  // Indigo 900
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -37,6 +38,11 @@ footer {
   }
 }
 
+.btn-custom {
+  background-color: $button-colour;
+  border-color: $navbar-default-bg;
+}
+
 #jumbo-home {
   background: asset-url('white-train.png');
   background-size: cover;
@@ -67,7 +73,7 @@ footer {
   margin-top: 0;
 }
 
-.well a {
+.well a, a.custom-link {
   color: $link-colour;
 }
 
