@@ -1,5 +1,6 @@
 $navbar-default-bg: #1A237E;  // Indigo 900
-$footer-bg: #5C6BC0;          // Indigo 400
+$footer-bg:         #5C6BC0;  // Indigo 400
+$link-colour:       #303F9F;  // Indigo 700
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -60,4 +61,12 @@ footer {
   &:hover {
     color: #C5CAE9;   // Indigo 100
   }
+}
+
+.description {
+  margin-top: 0;
+}
+
+.well a {
+  color: $link-colour;
 }

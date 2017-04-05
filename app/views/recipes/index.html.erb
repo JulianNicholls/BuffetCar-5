@@ -1,12 +1,10 @@
-<h1 class="text-center">Recipes</h1>
-
-<hr />
+<%= render 'shared/page_title', title: 'Recipes' %>
 
 <% @recipes.each do |recipe| %>
   <div class="row">
     <div class="col-sm-2"><section></section></div>
     <div class="col-sm-8 well">
-      <h4><%= recipe.name %></h4>
+      <h4><%= link_to recipe.name, recipe %></h4>
       <p><%= truncate(recipe.description, length: 150) %></p>
       <p>
         <span class="quiet">
