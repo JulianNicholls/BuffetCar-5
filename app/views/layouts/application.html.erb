@@ -14,6 +14,8 @@
 
   <body>
     <%= render 'layouts/navigation' %>
+    <%= render 'layouts/flash_messages' %>
+
     <% if params[:action] == 'home' %>
       <div class="container-fluid">
     <% else %>

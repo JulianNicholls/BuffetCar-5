@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %> alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= msg %>
+      </div>
+    <% end %>
+  </div>
+</div>
