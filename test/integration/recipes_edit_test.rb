@@ -22,10 +22,12 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
       description: recipe_desc
     } }
 
-    follow_redirect!
+    assert_redirected_to @recipe
+    assert_not flash.empty?
 
-    assert_match recipe_name, response.body
-    assert_match recipe_desc, response.body
+    @recipe.reload
+    assert_match recipe_name, @recipe.name
+    assert_match recipe_desc, @recipe.description
   end
 
   test 'Reject invalid recipe update' do
