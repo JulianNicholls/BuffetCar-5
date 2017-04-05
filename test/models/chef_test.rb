@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ChefTest < ActiveSupport::TestCase
-
   def setup
     @chef = Chef.new name: 'Julian Nicholls', email: 'julian@nowhere.com'
   end
@@ -36,7 +35,8 @@ class ChefTest < ActiveSupport::TestCase
   end
 
   test 'Chef should be valid with valid email addresses' do
-    valids = %w[julian@ok.org julian.nicholls@dotsok.org na@co.us julian+spam@test.org minus-char@test.org.uk]
+    valids = %w[julian@ok.org julian.nicholls@dotsok.org na@co.us
+                julian+spam@test.org minus-char@test.org.uk]
 
     valids.each do |email|
       @chef.email = email
@@ -45,7 +45,8 @@ class ChefTest < ActiveSupport::TestCase
   end
 
   test 'Chef should be invalid with invalid email addresses' do
-    invalids = %w[julian@ n%s@co.us julian+spam minus-char@test julian@invalid,com julian@test.]
+    invalids = %w[julian@ n%s@co.us julian+spam minus-char@test
+                  julian@invalid,com julian@test.]
 
     invalids.each do |email|
       @chef.email = email
@@ -68,5 +69,4 @@ class ChefTest < ActiveSupport::TestCase
     @chef.save
     assert_equal mixed_email.downcase, @chef.email
   end
-
 end

@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
-
   def setup
     chef = Chef.create name: 'Julian Nicholls', email: 'julian@nowhere.com'
-    @recipe = chef.recipes.build name: 'Vegetable Lasagna', description: 'Fantastic vegeable lasagna'
+    @recipe = chef.recipes.build name: 'Vegetable Lasagna',
+                                 description: 'Fantastic vegetable lasagna'
   end
 
   test 'Recipe should be valid' do
@@ -40,5 +40,4 @@ class RecipeTest < ActiveSupport::TestCase
     @recipe.description = 'A' * 11
     assert_not @recipe.valid?
   end
-
 end

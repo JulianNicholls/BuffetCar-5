@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class PagesTest < ActionDispatch::IntegrationTest
-
   test 'Should get home page' do
     get pages_home_url
     assert_response :success
@@ -11,5 +10,4 @@ class PagesTest < ActionDispatch::IntegrationTest
     get root_url
     assert_response :success
   end
-
 end
