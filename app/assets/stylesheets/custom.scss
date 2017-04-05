@@ -2,6 +2,7 @@ $footer-bg:         #5C6BC0;  // Indigo 400
 $button-colour:     #3949AB;  // Indigo 600
 $link-colour:       #303F9F;  // Indigo 700
 $navbar-default-bg: #1A237E;  // Indigo 900
+$navbar-inverse-bg: #1A237E;  // Indigo 900
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -40,7 +41,7 @@ footer {
 
 .btn-custom {
   background-color: $button-colour;
-  border-color: $navbar-default-bg;
+  border-color: $navbar-inverse-bg;
 }
 
 #jumbo-home {
@@ -48,7 +49,7 @@ footer {
   background-size: cover;
 
   h1, h1 small {
-    color: $navbar-default-bg;
+    color: $navbar-inverse-bg;
   }
 
   a {
