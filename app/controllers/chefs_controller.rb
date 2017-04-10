@@ -19,6 +19,19 @@ class ChefsController < ApplicationController
 
   end
 
+  def edit
+
+  end
+
+  def update
+    if @chef.update chef_params
+      flash[:success] = "your profile was updated successfully"
+      redirect_to @chef
+    else
+      render :edit
+    end
+  end
+
   private
 
   def chef_params
