@@ -1,23 +1,5 @@
 <%= render 'shared/page_title', title: 'Recipes' %>
-
-<% @recipes.each do |recipe| %>
-  <div class="row">
-    <div class="col-sm-2">
-      <section class="chef-info text-center">
-        <%= gravatar_for recipe.chef, size: 120 %>
-      </section>
-    </div>
-    <div class="col-sm-8 well">
-      <h4><%= link_to recipe.name, recipe %></h4>
-      <p><%= truncate(recipe.description, length: 150) %></p>
-      <p>
-        <span class="quiet">
-          <small>Created <%= time_ago_in_words(recipe.created_at) %> ago</small>
-        </span>
-      </p>
-    </div>
-  </div>
-<% end %>
+<%= render 'recipes', object: @recipes %>
 
 <div class="row">
   <div class="col-sm-10 col-sm-offset-2">
