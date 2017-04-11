@@ -15,5 +15,18 @@ class ChefsTestTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', chef_path(@chef1), text: @chef1.name
     assert_select 'a[href=?]', chef_path(@chef2), text: @chef2.name
 
+    assert_select 'a[href=?]', chef_path(@chef1), text: 'Delete Chef'
+    assert_select 'a[href=?]', chef_path(@chef2), text: 'Delete Chef'
+  end
+
+  test 'Should allow delete of chef' do
+    get chefs_path
+
+    assert_difference 'Chef.count', -1 do
+      delete chef_path(@chef2)
+    end
+
+    assert_redirected_to chefs_path
+    assert_not flash.empty?
   end
 end

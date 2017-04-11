@@ -4,13 +4,10 @@ class RecipesTest < ActionDispatch::IntegrationTest
   def setup
     @chef    = Chef.create! name: 'Julian Nicholls', email: 'julian@nowhere.com',
                             password: 'password', password_confirmation: 'password'
-    @recipe1 = @chef.recipes.build name: 'Vegetable Lasagna',
-                                   description: 'Fantastic vegetable lasagna'
-    @recipe2 = @chef.recipes.build name: 'Chilli con Carne',
-                                   description: 'Spicy Chilli with beef'
-
-    @recipe1.save
-    @recipe2.save
+    @recipe1 = @chef.recipes.create! name: 'Vegetable Lasagna',
+                                     description: 'Fantastic vegetable lasagna'
+    @recipe2 = @chef.recipes.create! name: 'Chilli con Carne',
+                                     description: 'Spicy Chilli with beef'
   end
 
   test 'Should get recipes index page' do

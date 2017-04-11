@@ -37,6 +37,12 @@ class ChefsController < ApplicationController
     end
   end
 
+  def destroy
+    @chef.destroy
+    flash[:danger] = 'The chef and all their recipes were deleted successfully'
+    redirect_to chefs_path
+  end
+
   private
 
   def chef_params

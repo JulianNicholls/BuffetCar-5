@@ -80,4 +80,14 @@ class ChefTest < ActiveSupport::TestCase
     @chef.save
     assert_equal mixed_email.downcase, @chef.email
   end
+
+  test 'Must delete associated recipes when deleting chef' do
+    @chef.save
+    @chef.recipes.create! name: 'testing destroy',
+                          description: 'testing destroy function'
+
+    assert_difference 'Recipe.count', -1 do
+      @chef.destroy
+    end
+  end
 end
