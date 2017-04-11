@@ -4,9 +4,35 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
   def setup
     @chef    = Chef.create! name: 'Julian Nicholls', email: 'julian@nowhere.com',
                             password: 'password', password_confirmation: 'password'
+
+    @chef2  = Chef.create! name: 'Mashrur Hossain', email: 'mashrur@nowhere.com',
+                           password: 'password', password_confirmation: 'password'
+  end
+
+  test 'Should only allow edits by the actual chef' do
+    get edit_chef_path(@chef)
+    assert_redirected_to chefs_path
+
+    patch chef_path, params: { chef: {
+      name:                  'Julian G. Nicholls',
+      email:                 'julian1@example.com'
+    } }
+    assert_redirected_to chefs_path
+
+    log_in_as @chef2, @chef2.password
+
+    get edit_chef_path(@chef)
+    assert_redirected_to chefs_path
+
+    patch chef_path, params: { chef: {
+      name:                  'Julian G. Nicholls',
+      email:                 'julian1@example.com'
+    } }
+    assert_redirected_to chefs_path
   end
 
   test 'Should accept valid edits' do
+    log_in_as @chef, @chef.password
     get edit_chef_path(@chef)
     assert_template 'chefs/edit'
 
@@ -23,6 +49,7 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'Should reject invalid edits' do
+    log_in_as @chef, @chef.password
     get edit_chef_path(@chef)
 
     patch chef_path, params: { chef: {

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ChefsTestTest < ActionDispatch::IntegrationTest
+class ChefsTest < ActionDispatch::IntegrationTest
   def setup
     @chef1  = Chef.create! name: 'Julian Nicholls', email: 'julian@nowhere.com',
                            password: 'password', password_confirmation: 'password'
@@ -19,7 +19,24 @@ class ChefsTestTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', chef_path(@chef2), text: 'Delete Chef'
   end
 
+  test 'Should not allow delete of chef when not logged in as that chef' do
+    assert_difference 'Chef.count', 0 do
+      delete chef_path(@chef2)
+    end
+
+    assert_redirected_to chefs_path
+
+    log_in_as @chef1, @chef1.password
+
+    assert_difference 'Chef.count', 0 do
+      delete chef_path(@chef2)
+    end
+
+    assert_redirected_to chefs_path
+  end
+
   test 'Should allow delete of chef' do
+    log_in_as @chef2, @chef2.password
     get chefs_path
 
     assert_difference 'Chef.count', -1 do
