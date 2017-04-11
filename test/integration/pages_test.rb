@@ -20,6 +20,7 @@ class PagesTest < ActionDispatch::IntegrationTest
 
     assert_select 'a[href=?]', signup_path, text: 'Sign up'
     assert_select 'a[href=?]', login_path, text: 'Log in'
+    assert_select 'a[href=?]', logout_path, text: 'Log out', count: 0
 
     assert_select 'a[href=?]', chef_path(@chef), text: 'View', count: 0
     assert_select 'a[href=?]', edit_chef_path(@chef), text: 'Edit', count: 0
@@ -38,6 +39,7 @@ class PagesTest < ActionDispatch::IntegrationTest
 
     assert_select 'a[href=?]', signup_path, text: 'Sign up', count: 0
     assert_select 'a[href=?]', login_path, text: 'Log in', count: 0
+    assert_select 'a[href=?]', logout_path, text: 'Log out'
 
     assert_select 'a[href=?]', chef_path(@chef), text: 'View'
     assert_select 'a[href=?]', edit_chef_path(@chef), text: 'Edit'
