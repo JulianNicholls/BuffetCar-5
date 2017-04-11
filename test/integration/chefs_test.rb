@@ -20,7 +20,7 @@ class ChefsTest < ActionDispatch::IntegrationTest
   end
 
   test 'Should not allow delete of chef when not logged in as that chef' do
-    assert_difference 'Chef.count', 0 do
+    assert_difference 'Chef.count', 0 do    # No-one logged in
       delete chef_path(@chef2)
     end
 
@@ -28,7 +28,7 @@ class ChefsTest < ActionDispatch::IntegrationTest
 
     log_in_as @chef1, @chef1.password
 
-    assert_difference 'Chef.count', 0 do
+    assert_difference 'Chef.count', 0 do    # Other chef logged in
       delete chef_path(@chef2)
     end
 

@@ -16,7 +16,11 @@
       <p class="text-center">
         <small><%= @recipe.chef.name %></small>
         <div class="pull-right">
-          <small><%= time_ago_in_words(@recipe.created_at) %> ago</small>
+          <% if @recipe.created_at == @recipe.updated_at %>
+            <small><%= time_ago_in_words @recipe.created_at %> ago</small>
+          <% else %>
+            <small>last updated <%= time_ago_in_words @recipe.updated_at %> ago</small>
+          <% end %>
         </div>
       </p>
     </div>
