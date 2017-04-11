@@ -1,8 +1,9 @@
-$footer-bg:         #5C6BC0;  // Indigo 400
+// $footer-bg:         #5C6BC0;  // Indigo 400
 $button-colour:     #3949AB;  // Indigo 600
 $link-colour:       #303F9F;  // Indigo 700
 $navbar-default-bg: #1A237E;  // Indigo 900
 $navbar-inverse-bg: #1A237E;  // Indigo 900
+$footer-bg:         $navbar-inverse-bg;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -88,4 +89,12 @@ footer {
   a {
     color: #fff;
   }
+}
+
+.list-summary {
+  min-height: 140px;
+}
+
+.recipe-list {
+  margin-top: 2em;
 }
