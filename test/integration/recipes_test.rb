@@ -31,7 +31,23 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', recipe_path(@recipe2), text: @recipe2.name
   end
 
-  test 'show page should have necessary information' do
+  test 'show page should have necessary information with no user logged in' do
+    get recipe_path(@recipe1)
+    assert_template 'recipes/show'
+
+    assert_match @recipe1.name, response.body
+    assert_match @recipe1.description, response.body
+    assert_match @recipe1.chef.name, response.body
+
+    assert_select 'a[href=?]', edit_recipe_path(@recipe1), text: 'Edit Recipe', count: 0
+    assert_select 'a[href=?]', recipe_path(@recipe1), text: 'Delete Recipe', count: 0
+    assert_select 'a[href=?]', recipes_path, text: 'Back to Recipe List'
+
+    assert_select 'a[href=?]', chef_path(@recipe1.chef)
+  end
+
+  test 'show page should have necessary information with the owning user logged in' do
+    log_in_as @chef, @chef.password
     get recipe_path(@recipe1)
     assert_template 'recipes/show'
 
