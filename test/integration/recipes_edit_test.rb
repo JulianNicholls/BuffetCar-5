@@ -4,11 +4,39 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
   def setup
     @chef   = Chef.create! name: 'Julian Nicholls', email: 'julian@nowhere.com',
                            password: 'password', password_confirmation: 'password'
+
+    @chef2   = Chef.create! name: 'Mashrur Hossain', email: 'mashrur@nowhere.com',
+                            password: 'password', password_confirmation: 'password'
+
     @recipe = @chef.recipes.create! name: 'Vegetable Lasagna',
                                     description: 'Fantastic vegetable lasagna'
   end
 
-  test 'Successfully edit a recipe' do
+  test 'Should not allow edit when not logged in' do
+    get edit_recipe_path(@recipe)
+    assert_redirected_to root_path
+
+    patch recipe_path(@recipe), params: { recipe: {
+      name: 'new name',
+      description: 'new desciption'
+    } }
+    assert_redirected_to root_path
+  end
+
+  test 'Should not allow edit when not recipe owner' do
+    log_in_as @chef2, @chef2.password
+    get edit_recipe_path(@recipe)
+    assert_redirected_to recipes_path
+
+    patch recipe_path(@recipe), params: { recipe: {
+      name: 'new name',
+      description: 'new desciption'
+    } }
+    assert_redirected_to recipes_path
+  end
+
+  test 'Should successfully edit a recipe' do
+    log_in_as @chef, @chef.password
     get edit_recipe_path(@recipe)
 
     assert_template 'recipes/edit'
@@ -29,7 +57,8 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
     assert_match recipe_desc, @recipe.description
   end
 
-  test 'Reject invalid recipe update' do
+  test 'Should reject invalid recipe update' do
+    log_in_as @chef, @chef.password
     get edit_recipe_path(@recipe)
 
     patch recipe_path(@recipe), params: { recipe: {
