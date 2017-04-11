@@ -11,7 +11,7 @@
         <em>Created by</em>
       </p>
       <p class="text-center">
-        <%= link_to gravatar_for(@recipe.chef), recipes_path %>
+        <%= link_to gravatar_for(@recipe.chef), @recipe.chef %>
       </p>
       <p class="text-center">
         <small><%= @recipe.chef.name %></small>
