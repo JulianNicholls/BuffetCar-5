@@ -1,8 +1,18 @@
 <%= render 'shared/page_title', title: 'Recipes' %>
+
+<div align="center">
+  <%= will_paginate %>
+</div>
+
 <%= render 'recipes', object: @recipes %>
+
+<div align="center">
+  <%= will_paginate %>
+</div>
 
 <div class="row">
   <div class="col-sm-10 col-sm-offset-2">
     [ <%= link_to 'Add a new Recipe', new_recipe_path, class: 'custom-link' %> ]
   </div>
 </div>
+
