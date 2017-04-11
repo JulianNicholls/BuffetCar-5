@@ -1,0 +1,23 @@
+<%= render 'shared/page_title', title: 'Log in to BuffetCar' %>
+
+<%= form_for :session, html: { class: 'form-horizontal', role: 'form' }, url: login_path do |f| %>
+  <div class="form-group">
+    <%= f.label :email, 'Email Address', class: 'col-sm-2 col-sm-offset-3 control-label' %>
+    <div class="col-sm-4">
+      <%= f.email_field :email, class: 'form-control', placeholder: 'Enter your email address' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, class: 'col-sm-2 col-sm-offset-3 control-label' %>
+    <div class="col-sm-4">
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Enter your password' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-5">
+      <%= f.submit 'Log in', class: 'btn btn-primary btn-custom btn-lg' %>
+    </div>
+  </div>
+<% end %>
