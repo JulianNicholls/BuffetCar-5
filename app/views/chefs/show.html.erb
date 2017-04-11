@@ -6,6 +6,14 @@
   </div>
 </div>
 
+<% if @chef.biography %>
+  <div class="row biography">
+    <div class="col-sm-6 col-sm-offset-2 text-center">
+      <%= @chef.biography %>
+    </div>
+  </div>
+<% end %>
+
 <h2 class="text-center recipe-list">Recipes</h2>
 
 <div align="center">

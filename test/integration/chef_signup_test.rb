@@ -14,7 +14,8 @@ class ChefSignupTest < ActionDispatch::IntegrationTest
         name:                  'Julian Nicholls',
         email:                 'julian@example.com',
         password:              'password',
-        password_confirmation: 'password'
+        password_confirmation: 'password',
+        biography:              'A short description of the chef'
       } }
     end
 

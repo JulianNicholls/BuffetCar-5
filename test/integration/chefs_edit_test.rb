@@ -14,8 +14,8 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to chefs_path
 
     patch chef_path, params: { chef: {
-      name:                  'Julian G. Nicholls',
-      email:                 'julian1@example.com'
+      name:   'Julian G. Nicholls',
+      email:  'julian1@example.com'
     } }
     assert_redirected_to chefs_path
 
@@ -25,8 +25,8 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to chefs_path
 
     patch chef_path, params: { chef: {
-      name:                  'Julian G. Nicholls',
-      email:                 'julian1@example.com'
+      name:   'Julian G. Nicholls',
+      email:  'julian1@example.com'
     } }
     assert_redirected_to chefs_path
   end
@@ -37,8 +37,9 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     assert_template 'chefs/edit'
 
     patch chef_path, params: { chef: {
-      name:                  'Julian G. Nicholls',
-      email:                 'julian1@example.com'
+      name:       'Julian G. Nicholls',
+      email:      'julian1@example.com',
+      biography:  'This is a short description of the chef'
     } }
 
     assert_redirected_to @chef
@@ -53,8 +54,8 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     get edit_chef_path(@chef)
 
     patch chef_path, params: { chef: {
-      name:                  'Anne',
-      email:                 'anne@example.com'
+      name:   'Anne',
+      email:  'anne@example.com'
     } }
 
     assert_template 'chefs/edit'

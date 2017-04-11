@@ -29,10 +29,10 @@
     </div>
   </div>
 
-  <% unless true || @chef.new_record? %>
+  <% unless @chef.new_record? %>
     <div class="form-group">
-      <%= f.label :biography, 'Bio', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-8">
+      <%= f.label :biography, 'Bio', class: 'col-sm-2 col-sm-offset-2 control-label' %>
+      <div class="col-sm-6">
         <%= f.text_area :biography, class: 'form-control', rows: 5, placeholder: 'Tell us a little about yourself' %>
       </div>
     </div>
