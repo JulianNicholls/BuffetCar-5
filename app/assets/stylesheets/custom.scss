@@ -1,9 +1,10 @@
-// $footer-bg:         #5C6BC0;  // Indigo 400
-$button-colour:     #3949AB;  // Indigo 600
-$link-colour:       #303F9F;  // Indigo 700
-$navbar-default-bg: #1A237E;  // Indigo 900
-$navbar-inverse-bg: #1A237E;  // Indigo 900
-$footer-bg:         $navbar-inverse-bg;
+$button-colour:             #3949AB;  // Indigo 600
+$link-colour:               #303F9F;  // Indigo 700
+$navbar-inverse-bg:         #1A237E;  // Indigo 900
+$footer-bg:                 $navbar-inverse-bg;
+
+$well-bg:                   #E8EAF6;  // Indigo 50
+$navbar-inverse-link-color: $well-bg;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -95,6 +96,6 @@ footer {
   min-height: 140px;
 }
 
-.recipe-list {
+.recipe-list, .biography {
   margin-top: 2em;
 }
