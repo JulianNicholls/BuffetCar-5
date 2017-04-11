@@ -7,6 +7,7 @@ class RecipesNewTest < ActionDispatch::IntegrationTest
   end
 
   test 'Should create new valid recipe' do
+    log_in_as @chef, @chef.password
     get new_recipe_path
 
     assert_template 'recipes/new'
@@ -29,6 +30,7 @@ class RecipesNewTest < ActionDispatch::IntegrationTest
   end
 
   test 'Should reject invalid new recipe' do
+    log_in_as @chef, @chef.password
     get new_recipe_path
 
     assert_no_difference 'Recipe.count' do

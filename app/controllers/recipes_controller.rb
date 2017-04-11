@@ -14,8 +14,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new recipe_params
-
-    @recipe.chef = Chef.first   # TODO
+    @recipe.chef = current_chef
 
     if @recipe.save
       flash[:success] = "The recipe was added successfully"
