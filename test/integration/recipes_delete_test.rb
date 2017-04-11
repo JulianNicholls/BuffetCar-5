@@ -4,8 +4,30 @@ class RecipesDeleteTest < ActionDispatch::IntegrationTest
   def setup
     @chef   = Chef.create! name: 'Julian Nicholls', email: 'julian@nowhere.com',
                            password: 'password', password_confirmation: 'password'
+
+    @chef2   = Chef.create! name: 'Mashrur Hossain', email: 'mashrur@nowhere.com',
+                            password: 'password', password_confirmation: 'password'
+
     @recipe = @chef.recipes.create! name: 'Vegetable Lasagna',
                                     description: 'Fantastic vegetable lasagna'
+  end
+
+  test 'Should not allow delete when not logged in' do
+    assert_difference 'Recipe.count', 0 do
+      delete recipe_path(@recipe)
+    end
+
+    assert_redirected_to root_path
+  end
+
+  test 'Should not allow delete when not logged in as the recipe owner' do
+    log_in_as @chef2, @chef2.password
+
+    assert_difference 'Recipe.count', 0 do
+      delete recipe_path(@recipe)
+    end
+
+    assert_redirected_to recipes_path
   end
 
   test 'should delete a recipe' do
