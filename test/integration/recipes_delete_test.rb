@@ -12,6 +12,20 @@ class RecipesDeleteTest < ActionDispatch::IntegrationTest
                                     description: 'Fantastic vegetable lasagna'
   end
 
+  test 'should delete a recipe' do
+    log_in_as @chef, @chef.password
+    get recipe_path(@recipe)
+    assert_template 'recipes/show'
+    assert_select 'a[href=?]', recipe_path(@recipe), text: 'Delete Recipe'
+
+    assert_difference 'Recipe.count', -1 do
+      delete recipe_path(@recipe)
+    end
+
+    assert_redirected_to recipes_path
+    assert_not flash.empty?
+  end
+
   test 'Should not allow delete when not logged in' do
     assert_difference 'Recipe.count', 0 do
       delete recipe_path(@recipe)
@@ -30,11 +44,9 @@ class RecipesDeleteTest < ActionDispatch::IntegrationTest
     assert_redirected_to recipes_path
   end
 
-  test 'should delete a recipe' do
-    log_in_as @chef, @chef.password
-    get recipe_path(@recipe)
-    assert_template 'recipes/show'
-    assert_select 'a[href=?]', recipe_path(@recipe), text: 'Delete Recipe'
+  test 'Should allow delete by an admin' do
+    log_in_as @chef2, @chef2.password
+    @chef2.toggle! :admin
 
     assert_difference 'Recipe.count', -1 do
       delete recipe_path(@recipe)
