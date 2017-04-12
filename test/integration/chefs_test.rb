@@ -9,7 +9,8 @@ class ChefsTest < ActionDispatch::IntegrationTest
                            password: 'password', password_confirmation: 'password'
 
     @admin  = Chef.create! name: 'Admin Usert', email: 'admin@nowhere.com',
-                           password: 'password', password_confirmation: 'password'
+                           password: 'password', password_confirmation: 'password',
+                           admin: true
   end
 
   test 'Should list all chefs with no-one logged in' do
@@ -41,7 +42,6 @@ class ChefsTest < ActionDispatch::IntegrationTest
 
   test 'Should list all chefs with delete options, only for other chefs, to an admin' do
     log_in_as @admin, @admin.password
-    @admin.toggle! :admin
 
     get chefs_path
     assert_template 'chefs/index'

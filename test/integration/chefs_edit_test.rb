@@ -2,11 +2,15 @@ require 'test_helper'
 
 class ChefsEditTest < ActionDispatch::IntegrationTest
   def setup
-    @chef    = Chef.create! name: 'Julian Nicholls', email: 'julian@nowhere.com',
-                            password: 'password', password_confirmation: 'password'
+    @chef   = Chef.create! name: 'Julian Nicholls', email: 'julian@nowhere.com',
+                           password: 'password', password_confirmation: 'password'
 
     @chef2  = Chef.create! name: 'Mashrur Hossain', email: 'mashrur@nowhere.com',
                            password: 'password', password_confirmation: 'password'
+
+    @admin  = Chef.create! name: 'Admin Usert', email: 'admin@nowhere.com',
+                           password: 'password', password_confirmation: 'password',
+                           admin: true
   end
 
   test 'Should accept valid edits' do
@@ -64,20 +68,19 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'Should allow edits by an admin user' do
-    log_in_as @chef2, @chef2.password
-    @chef2.toggle! :admin
+    log_in_as @admin, @admin.password
 
     get edit_chef_path(@chef)
 
     patch chef_path, params: { chef: {
-      name:   'Julian G. Nicholls',
-      email:  'julian1@example.com'
+      name:   'Julian F. Nicholls',
+      email:  'julian2@example.com'
     } }
 
     assert_redirected_to @chef
     @chef.reload
 
-    assert_match 'Julian G. Nicholls', @chef.name
-    assert_match 'julian1@example.com', @chef.email
+    assert_match 'Julian F. Nicholls', @chef.name
+    assert_match 'julian2@example.com', @chef.email
   end
 end

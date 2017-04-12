@@ -4,6 +4,7 @@ class ChefsDeleteTest < ActionDispatch::IntegrationTest
   def setup
     @chef1  = Chef.create! name: 'Julian Nicholls', email: 'julian@nowhere.com',
                            password: 'password', password_confirmation: 'password'
+
     @chef2  = Chef.create! name: 'Mashrur Hossain', email: 'mashrur@nowhere.com',
                            password: 'password', password_confirmation: 'password'
   end
