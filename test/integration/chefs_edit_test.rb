@@ -25,8 +25,8 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     } }
 
     assert_redirected_to @chef
-    @chef.reload
 
+    @chef.reload
     assert_match 'Julian G. Nicholls', @chef.name
     assert_match 'julian1@example.com', @chef.email
   end
@@ -36,16 +36,20 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     get edit_chef_path(@chef)
 
     patch chef_path, params: { chef: {
-      name:   'Anne',
+      name:   'Anne',               # too short
       email:  'anne@example.com'
     } }
 
     assert_template 'chefs/edit'
     assert_select 'h2.panel-title'
     assert_select 'div.panel-body'
+
+    @chef.reload
+    assert_match 'Julian Nicholls', @chef.name
+    assert_match 'julian@nowhere.com', @chef.email
   end
 
-  test 'Should not allow edits except by the actual chef' do
+  test 'Should not allow edits when not logged in' do
     get edit_chef_path(@chef)
     assert_redirected_to chefs_path
 
@@ -55,6 +59,12 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     } }
     assert_redirected_to chefs_path
 
+    @chef.reload
+    assert_match 'Julian Nicholls', @chef.name
+    assert_match 'julian@nowhere.com', @chef.email
+  end
+
+  test 'Should not allow edits by other users' do
     log_in_as @chef2, @chef2.password
 
     get edit_chef_path(@chef)
@@ -65,6 +75,10 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
       email:  'julian1@example.com'
     } }
     assert_redirected_to chefs_path
+
+    @chef.reload
+    assert_match 'Julian Nicholls', @chef.name
+    assert_match 'julian@nowhere.com', @chef.email
   end
 
   test 'Should allow edits by an admin user' do
@@ -78,8 +92,8 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     } }
 
     assert_redirected_to @chef
-    @chef.reload
 
+    @chef.reload
     assert_match 'Julian F. Nicholls', @chef.name
     assert_match 'julian2@example.com', @chef.email
   end
