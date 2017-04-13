@@ -1,12 +1,16 @@
 <% object.each do |recipe| %>
   <div class="row">
+  <% if skip_gravatar %>
+    <div class="col-sm-10 col-sm-offset-1 well list-summary">
+  <% else %>
     <div class="col-sm-2">
       <section class="chef-info text-center">
         <%= gravatar_for recipe.chef, size: 120 %>
       </section>
     </div>
-    <div class="col-sm-8 well list-summary">
-      <h4><%= link_to recipe.name, recipe %></h4>
+    <div class="col-sm-10 well list-summary">
+  <% end %>
+      <h3 class="text-center"><%= link_to recipe.name, recipe %></h3>
       <p><%= truncate(recipe.description, length: 150) %></p>
       <% if logged_in? && (current_chef.admin? || current_chef == recipe.chef) %>
         <div class="pull-right recipe-actions" >
