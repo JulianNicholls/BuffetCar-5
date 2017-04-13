@@ -96,8 +96,12 @@ footer {
   min-height: 140px;
 }
 
-.recipe-list, .biography {
+.recipe-list {
   margin-top: 2em;
+}
+
+.biography {
+  min-height: 170px;
 }
 
 .aside-message {
