@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_chef, :logged_in?
 
   def current_chef
-    @current_chef ||= Chef.find session[:chef_id] if session[:chef_id]
+    chef_id = session[:chef_id]
+    @current_chef ||= Chef.find chef_id if chef_id
   end
 
   def logged_in?
