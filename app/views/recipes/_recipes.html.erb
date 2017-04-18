@@ -15,7 +15,7 @@
       <% if logged_in? && (current_chef.admin? || current_chef == recipe.chef) %>
         <div class="pull-right recipe-actions" >
           <%= link_to 'Edit Recipe', edit_recipe_path(recipe),
-                       class: 'btn btn-xs btn-warning' %>
+                      class: 'btn btn-xs btn-primary btn-custom' %>
           <%= link_to 'Delete Recipe', recipe_path(recipe), method: :delete,
                       data: { confirm: 'Are you sure you want to delete this recipe' },
                       class: 'btn btn-xs btn-danger' %>
@@ -23,10 +23,16 @@
       <% end %>
       <p>
         <% if recipe.created_at == recipe.updated_at %>
-          <span class="quiet"><small>Created <%= time_ago_in_words recipe.created_at %> ago</small></span>
+          <span class="quiet">
+            <small>Created <%= time_ago_in_words recipe.created_at %> ago</small>
+          </span>
         <% else %>
-          <span class="quiet"><small>Created <%= time_ago_in_words recipe.created_at %> ago,</small></span>
-          <span class="quiet"><small>last updated <%= time_ago_in_words recipe.updated_at %> ago</small></span>
+          <span class="quiet">
+            <small>
+              Created <%= time_ago_in_words recipe.created_at %> ago,
+              last updated <%= time_ago_in_words recipe.updated_at %> ago
+            </small>
+          </span>
         <% end %>
       </p>
     </div>
