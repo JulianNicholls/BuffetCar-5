@@ -3,7 +3,7 @@ require 'test_helper'
 class ChefLoginTest < ActionDispatch::IntegrationTest
   def setup
     @chef    = Chef.create! name: 'Julian Nicholls', email: 'julian@nowhere.com',
-                          password: 'password', password_confirmation: 'password'
+                            password: 'password', password_confirmation: 'password'
   end
 
   test 'Should accept valid chef credentials and start a session' do
@@ -26,7 +26,7 @@ class ChefLoginTest < ActionDispatch::IntegrationTest
 
     assert_select 'a[href=?]', chef_path(@chef), text: 'View'
     assert_select 'a[href=?]', edit_chef_path(@chef), text: 'Edit'
- end
+  end
 
   test 'Should reject unknown chef' do
     get login_path

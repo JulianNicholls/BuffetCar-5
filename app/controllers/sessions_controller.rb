@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:success] = "You have logged in successfully"
       redirect_to chef
     else
-      flash.now[:danger] = "There was something wrong with your email address or password"
+      flash.now[:danger] = "Your email address or password were not recognised"
       render :new
     end
   end
