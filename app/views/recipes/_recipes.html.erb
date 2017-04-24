@@ -12,6 +12,9 @@
   <% end %>
       <h3 class="text-center"><%= link_to recipe.name, recipe %></h3>
       <p><%= truncate(recipe.description, length: 150) %></p>
+      <% if recipe.ingredients.any? %>
+        <p>Ingredients: <%= render recipe.ingredients %></p>
+      <% end %>
       <% if logged_in? && (current_chef.admin? || current_chef == recipe.chef) %>
         <div class="pull-right recipe-actions" >
           <%= link_to 'Edit Recipe', edit_recipe_path(recipe),
