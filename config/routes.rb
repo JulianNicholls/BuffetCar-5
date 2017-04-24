@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :ingredients, except:[:destroy]
 
   get 'pages/home'
+  get '/about',     to: 'pages#about'
 
   get '/signup',    to: 'chefs#new'
 
