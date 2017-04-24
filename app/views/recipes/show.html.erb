@@ -5,6 +5,9 @@
     <h4 class="description text-center">Steps</h4>
     <hr />
     <p><%= simple_format(@recipe.description) %></p>
+    <% if @recipe.ingredients.any? %>
+      <p>Ingredients: <%= render @recipe.ingredients %></p>
+    <% end %>
     <hr />
     <div class="pull-right">
       <p class="text-center">
