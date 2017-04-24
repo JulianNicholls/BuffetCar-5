@@ -11,11 +11,17 @@ class IngredientsController < ApplicationController
   end
 
   def new
-
+    @ingredient = Ingredient.new
   end
 
   def create
-
+    @ingredient = Ingredient.new ingredient_params
+    if @ingredient.save
+      flash[:success] = "#{@ingredient.name} was added successfully"
+      redirect_to ingredients_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -28,7 +34,7 @@ class IngredientsController < ApplicationController
 
   private
 
-  def ingredients_params
+  def ingredient_params
     params.require(:ingredient).permit :name
   end
 
