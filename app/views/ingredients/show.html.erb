@@ -1,0 +1,15 @@
+<%= render 'shared/page_title', title: "Recipes using #{@ingredient.name}" %>
+
+<% if @ingredient_recipes.any? %>
+  <div align="center">
+    <%= will_paginate @ingredient_recipes %>
+  </div>
+
+  <%= render 'recipes/recipes', object: @ingredient_recipes, show_chef: false %>
+
+  <div align="center">
+    <%= will_paginate @ingredient_recipes %>
+  </div>
+<% else %>
+  <h2 class="text-center recipe-list">No Recipes yet</h2>
+<% end %>

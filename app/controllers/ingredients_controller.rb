@@ -7,7 +7,7 @@ class IngredientsController < ApplicationController
   end
 
   def show
-
+    @ingredient_recipes = @ingredient.recipes.paginate page: params[:page], per_page: 5
   end
 
   def new
