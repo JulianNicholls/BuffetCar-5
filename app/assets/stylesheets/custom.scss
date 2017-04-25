@@ -1,7 +1,8 @@
 $button-colour:             #3949AB;  // Indigo 600
 $link-colour:               #303F9F;  // Indigo 700
-$navbar-inverse-bg:         #1A237E;  // Indigo 900
+$navbar-inverse-bg:         #283593;  // Indigo 800
 $footer-bg:                 $navbar-inverse-bg;
+$footer-border:             #1A237E;  // Indigo 900
 
 $well-bg:                   #E8EAF6;  // Indigo 50
 $navbar-inverse-link-color: $well-bg;
@@ -11,9 +12,10 @@ $navbar-inverse-link-color: $well-bg;
 
 footer {
   margin-top: 2em;
-  padding: 0.5em 1em;
+  padding: 0.5em 1em 0 1em;
   background: $footer-bg;
-  color: #fff;
+  border-top: 1px solid $footer-border;
+  color: #eee;
   position: relative;
   overflow: auto;
 
@@ -24,6 +26,10 @@ footer {
 
   a {
     color: #fff;
+
+    &:hover {
+      color: #ffe;
+    }
   }
 
   nav {
@@ -111,4 +117,13 @@ footer {
   text-align: center;
   color: white;
   font-size: 90%;
+}
+
+span.ingredient.badge a {
+  color: white;
+}
+
+.ing-checkbox input {
+  width: auto !important;
+  margin-top: 4px !important;
 }

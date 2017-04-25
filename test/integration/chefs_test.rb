@@ -40,7 +40,7 @@ class ChefsTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', chef_path(@admin), text: 'Delete Chef', count: 0
   end
 
-  test 'Should list all chefs with delete options, only for other chefs, to an admin' do
+  test 'Should list other chefs with delete options to an admin' do
     log_in_as @admin, @admin.password
 
     get chefs_path

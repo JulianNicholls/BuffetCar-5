@@ -54,7 +54,9 @@ class ChefsController < ApplicationController
   private
 
   def chef_params
-    params.require(:chef).permit :name, :email, :password, :password_confirmation, :biography
+    params.require(:chef).permit :name, :email,
+                                 :password, :password_confirmation,
+                                 :biography
   end
 
   def set_chef
@@ -70,7 +72,7 @@ class ChefsController < ApplicationController
 
   def require_admin
     unless logged_in? && current_chef.admin?
-      flash[:danger] = 'Only admin users can delete chefs'
+      flash[:danger] = 'Only administrators can delete chefs'
       redirect_to chefs_path
     end
   end

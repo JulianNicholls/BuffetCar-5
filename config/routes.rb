@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :recipes
   resources :chefs, except: [:new]
+  resources :ingredients, except:[:destroy]
 
   get 'pages/home'
+  get '/about',     to: 'pages#about'
 
   get '/signup',    to: 'chefs#new'
 

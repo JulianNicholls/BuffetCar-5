@@ -1,0 +1,46 @@
+<div class="jumbotron" id="jumbo-home">
+  <div class="container">
+    <h1>Buffet Car 5</h1>
+    <h2>The best recipe sharing app on rails.</h2>
+
+    <% unless logged_in? %>
+      <p class="text-center">
+        <%= link_to 'Sign up today', signup_path, class: 'btn btn-primary btn-custom btn-lg' %>
+      </p>
+    <% end %>
+  </div>
+</div>
+
+<% unless logged_in? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3 class="text-center">View Recipes</h3>
+        <p class="lead">Browse the recipes for free, and sign up for an account later.</p>
+
+        <p class="text-center">
+          <%= link_to 'Browse recipes', recipes_path, class: 'btn btn-primary btn-custom btn-lg' %>
+        </p>
+      </div>
+
+      <div class="col-sm-4">
+        <h3 class="text-center">Log in</h3>
+        <p class="lead">Add and update your own recipes. Vote for favourite recipes. Write reviews, and more.</p>
+
+        <p class="text-center">
+          <%= link_to 'Log in', '#', class: 'btn btn-primary btn-custom btn-lg' %>
+        </p>
+      </div>
+
+      <div class="col-sm-4">
+        <h3 class="text-center">Sign up</h3>
+        <p class="lead">Get access to add your own recipes, write reviews, and vote for your favourite recipes.</p>
+
+        <p class="text-center">
+          <%= link_to 'Sign up', '#', class: 'btn btn-primary btn-custom btn-lg' %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -16,14 +16,18 @@
 <% end %>
 </div>
 
-<h2 class="text-center recipe-list">Recipes</h2>
+<% if @chef_recipes.any? %>
+  <h2 class="text-center recipe-list">Recipes</h2>
 
-<div align="center">
-  <%= will_paginate @chef_recipes %>
-</div>
+  <div align="center">
+    <%= will_paginate @chef_recipes %>
+  </div>
 
-<%= render 'recipes/recipes', object: @chef_recipes, skip_gravatar: true %>
+  <%= render 'recipes/recipes', object: @chef_recipes, show_chef: false %>
 
-<div align="center">
-  <%= will_paginate @chef_recipes %>
-</div>
+  <div align="center">
+    <%= will_paginate @chef_recipes %>
+  </div>
+<% else %>
+  <h2 class="text-center recipe-list">No Recipes yet</h2>
+<% end %>
