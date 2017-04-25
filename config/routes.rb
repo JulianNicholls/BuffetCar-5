@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :recipes
+  resources :recipes do
+    resources :comments, only: :create
+  end
+
   resources :chefs, except: [:new]
   resources :ingredients, except:[:destroy]
 

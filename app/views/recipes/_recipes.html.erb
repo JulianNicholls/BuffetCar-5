@@ -41,6 +41,10 @@
             <% end %>
             last updated <%= time_ago_in_words recipe.updated_at %> ago
           <% end %>
+
+          <% if recipe.comments.any? %>
+            | <%= pluralize recipe.comments.count, 'Comment' %>
+          <% end %>
           </small>
         </span>
       </p>
