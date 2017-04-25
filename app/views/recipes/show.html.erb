@@ -41,3 +41,13 @@
   </div>
 </div>
 
+<% if @recipe.comments.any? %>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h3 class="text-center">Comments</h3>
+      <div class="comments">
+        <%= render partial: 'comments/comments', object: @comments %>
+      </div>
+    </div>
+  </div>
+<% end %>
