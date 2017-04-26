@@ -15,7 +15,9 @@ class ChefsController < ApplicationController
     @chef = Chef.new chef_params
 
     if @chef.save
-      session[:chef_id] = @chef.id
+      session[:chef_id]        = @chef.id
+      cookies.signed[:chef_id] = @chef.id
+
       flash[:success] = "Welcome #{@chef.name}. You have signed up successfully"
       redirect_to @chef
     else
