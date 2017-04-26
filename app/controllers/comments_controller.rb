@@ -8,8 +8,6 @@ class CommentsController < ApplicationController
 
     if @comment.save
       ActionCable.server.broadcast 'comments', render(partial: 'comments/comment', object: @comment)
-      # flash[:success] = 'Your comment has been saved'
-      # redirect_to @recipe
     else
       message = 'That comment could not be saved'
       if @comment.errors.any?

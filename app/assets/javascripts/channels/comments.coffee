@@ -5,6 +5,6 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
   disconnected: ->
     # Called when the subscription has been terminated by the server
 
+  # Called when there's incoming data on the websocket for this channel
   received: (data) ->
     $('#comments').prepend(data)
-    # Called when there's incoming data on the websocket for this channel

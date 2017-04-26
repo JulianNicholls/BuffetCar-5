@@ -127,3 +127,38 @@ span.ingredient.badge a {
   width: auto !important;
   margin-top: 4px !important;
 }
+
+#messages {
+  border: 1px solid #eee;
+  height: 55vh;   // 55% of vertical height
+  padding: 5px;
+  position: relative;
+  overflow: auto;
+}
+
+.chef-message {
+  width: 95%;
+  padding: 0 0 5px 0;
+  margin-bottom: 5px;
+
+  img {
+    float: left;
+    margin-right: 5px;
+  }
+}
+
+.message-container {
+  margin-top: 1.5em;
+
+  .form-control {
+    float: left;
+    width: 85%;
+  }
+
+  .btn {
+    float: right;
+    width: 12%;
+    height: 50px;
+  }
+}
+

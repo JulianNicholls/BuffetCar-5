@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :chefs, except: [:new]
   resources :ingredients, except:[:destroy]
+  resources :messages, only: :create
 
   get 'pages/home'
   get '/about',     to: 'pages#about'
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   get '/login',     to: 'sessions#new'
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  get '/chat',      to: 'chatrooms#show'
 
   root 'pages#home'
 
