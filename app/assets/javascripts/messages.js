@@ -6,5 +6,15 @@ function scrollToBottom() {
   }
 }
 
+function submitMessage(event) {
+  event.preventDefault();
+  $('#new_message').submit();
+}
+
 $(document).ready(scrollToBottom);
 $(document).on('turbolinks:load', scrollToBottom);
+
+$(document).on('keypress', '[data-behavior~=room_speaker]', function (event) {
+  if (event.keyCode == 13)        // Enter
+    submitMessage(event)
+});
