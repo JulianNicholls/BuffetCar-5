@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     @message.chef = current_chef
 
     if @message.save
-      redirect_to chat_path
+      ActionCable.server.broadcast 'chatroom', render(@message)
     else
       render 'chatrooms/show'
     end

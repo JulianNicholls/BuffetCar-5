@@ -9,7 +9,7 @@
 </div>
 <hr />
 <div class="message-container">
-  <%= form_for @message, html: { class: 'form-horizontal', role: 'form'} do |f| %>
+  <%= form_for @message, remote: true, html: { class: 'form-horizontal', role: 'form'} do |f| %>
     <%= f.text_area :content, rows: 2, class: 'form-control', placeholder: "What's on your mind? (politeness costs nothing, profanity will be deleted)", autofocus: true %>
     <%= f.submit "Send", class: 'btn btn-primary btn-custom' %>
   <% end %>
