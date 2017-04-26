@@ -1,0 +1,13 @@
+<div class="row chef-message">
+  <div class="col-sm-3">
+    <%= link_to gravatar_for(message.chef, size: 40), message.chef %>
+    <%= link_to message.chef.name, message.chef %><br />
+    <span class="quiet">
+      <small><%= time_ago_in_words message.created_at %> ago</small>
+    </span>
+    <hr />
+  </div>
+  <div class="col-sm-9">
+    <%= message.content %>
+  </div>
+</div>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :chefs, except: [:new]
   resources :ingredients, except:[:destroy]
+  resources :messages, only: :create
 
   get 'pages/home'
   get '/about',     to: 'pages#about'

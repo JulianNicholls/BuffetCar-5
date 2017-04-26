@@ -3,4 +3,8 @@ class Message < ApplicationRecord
 
   validates :content, presence: true
   validates :chef_id, presence: true
+
+  def self.most_recent
+    order(:created_at).last(50)
+  end
 end
