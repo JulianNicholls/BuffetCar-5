@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:chef_id] = nil
+    session[:chef_id]        = nil
     cookies.signed[:chef_id] = nil
 
     flash[:success] = "You have logged out successfully"
