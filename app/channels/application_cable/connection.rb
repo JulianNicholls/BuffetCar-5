@@ -1,7 +1,7 @@
 module ApplicationCable
-  identified_by :current_chef
-
   class Connection < ActionCable::Connection::Base
+    identified_by :current_chef
+
     def connect
       self.current_chef = find_current_user
     end
@@ -13,7 +13,7 @@ module ApplicationCable
     protected
 
     def find_current_user
-      if current_chef == Chef.find cookies.signed[:chef_id]
+      if current_chef = Chef.find(cookies.signed[:chef_id])
         current_chef
       else
         reject_unathorized_connection
