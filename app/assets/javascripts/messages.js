@@ -7,3 +7,4 @@ function scrollToBottom() {
 }
 
 $(document).ready(scrollToBottom);
+$(document).on('turbolinks:load', scrollToBottom);
