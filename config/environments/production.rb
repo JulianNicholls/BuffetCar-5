@@ -88,4 +88,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Set up for ActionCable websockets in production
+  config.web_socket_server_url = 'wss://buffetcar-5.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = ['https://buffetcar-5.herokuapp.com', 'http://buffetcar-5.herokuapp.com']
 end
