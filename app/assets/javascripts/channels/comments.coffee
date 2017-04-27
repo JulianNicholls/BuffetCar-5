@@ -7,4 +7,4 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
 
   # Called when there's incoming data on the websocket for this channel
   received: (data) ->
-    $('#comments').prepend(data)
+    $(data).insertBefore('#comments .comment:first')
