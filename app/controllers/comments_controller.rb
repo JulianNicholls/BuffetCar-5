@@ -7,7 +7,11 @@ class CommentsController < ApplicationController
     @comment.chef = current_chef
 
     if @comment.save
-      ActionCable.server.broadcast 'comments', render(partial: 'comments/comment', object: @comment)
+      if @recipe.comments.count == 1  # First one
+        redirect_to @recipe
+      else
+        ActionCable.server.broadcast 'comments', render(partial: 'comments/comment', object: @comment)
+      end
     else
       message = 'That comment could not be saved'
       if @comment.errors.any?
