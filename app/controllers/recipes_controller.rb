@@ -1,13 +1,14 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:edit, :update, :destroy]
   before_action :require_user, except: [:index, :show]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.paginate page: params[:page], per_page: 5
+    @recipes = Recipe.includes(:ingredients, :recipe_ingredients, :chef, :comments).paginate page: params[:page], per_page: 5
   end
 
   def show
+    @recipe   = Recipe.includes(:chef, :comments).find params[:id]
     @comments = @recipe.comments.paginate page: params[:page], per_page: 5
     @comment  = Comment.new
   end

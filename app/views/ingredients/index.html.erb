@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 well list-summary">
       <h3 class="text-center"><%= link_to ingredient.name, ingredient %></h3>
-      <p class="text-center"><%= pluralize(ingredient.recipes.count, 'recipe') if ingredient.recipes.any? %></p>
+      <p class="text-center"><%= pluralize(ingredient.recipes.size, 'recipe') if ingredient.recipes.any? %></p>
       <% if logged_in? && current_chef.admin? %>
         <div class="pull-right chef-actions">
           <%= link_to 'Edit Ingredient', edit_ingredient_path(ingredient), class: 'btn btn-xs btn-primary btn-custom' %>
