@@ -24,8 +24,8 @@ class ChefLoginTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', login_path, text: 'Log in', count: 0
     assert_select 'a[href=?]', logout_path, text: 'Log out'
 
-    assert_select 'a[href=?]', chef_path(@chef), text: 'View'
-    assert_select 'a[href=?]', edit_chef_path(@chef), text: 'Edit'
+    assert_select 'a[href=?]', chef_path(@chef), text: 'View Profile'
+    assert_select 'a[href=?]', edit_chef_path(@chef), text: 'Edit Profile'
   end
 
   test 'Should reject unknown chef' do

@@ -22,8 +22,8 @@ class PagesTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', login_path, text: 'Log in'
     assert_select 'a[href=?]', logout_path, text: 'Log out', count: 0
 
-    assert_select 'a[href=?]', chef_path(@chef), text: 'View', count: 0
-    assert_select 'a[href=?]', edit_chef_path(@chef), text: 'Edit', count: 0
+    assert_select 'a[href=?]', chef_path(@chef), text: 'View Profile', count: 0
+    assert_select 'a[href=?]', edit_chef_path(@chef), text: 'Edit Profile', count: 0
   end
 
   test 'Should find correct navigation items with logged in user' do
@@ -41,8 +41,8 @@ class PagesTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', login_path, text: 'Log in', count: 0
     assert_select 'a[href=?]', logout_path, text: 'Log out'
 
-    assert_select 'a[href=?]', chef_path(@chef), text: 'View'
-    assert_select 'a[href=?]', edit_chef_path(@chef), text: 'Edit'
+    assert_select 'a[href=?]', chef_path(@chef), text: 'View Profile'
+    assert_select 'a[href=?]', edit_chef_path(@chef), text: 'Edit Profile'
   end
 
   test 'Should get root' do
