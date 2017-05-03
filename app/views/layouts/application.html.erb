@@ -10,6 +10,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://use.fontawesome.com/3d3a1ab939.js"></script>
   </head>
 
   <body>
@@ -17,14 +18,14 @@
     <%= render 'layouts/flash_messages' %>
 
     <% if params[:action] == 'home' %>
-      <div class="container-fluid">
+      <div class="container-fluid">     <!-- Full width -->
     <% else %>
-      <div class="container">
+      <div class="container">           <!-- Normal width -->
     <% end %>
 
     <%= yield %>
 
-    </div>  <!-- End of container or container-fluid  -->
+    </div>                              <!-- End of container or container-fluid  -->
     <%= render 'layouts/footer' %>
   </body>
 </html>

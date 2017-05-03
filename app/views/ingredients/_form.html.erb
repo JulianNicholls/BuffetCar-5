@@ -10,8 +10,16 @@
 
   <div class="form-group">
     <div class="col-sm-10 col-sm-offset-2">
-      <%= f.submit (@ingredient.new_record? ? 'Add new Ingredient' : 'Update Ingredient'),
-                   class: 'btn btn-primary btn-custom btn-lg' %>
+      <%= f.button type: 'submit', class: 'btn btn-primary btn-custom btn-lg' do %>
+        <% if @ingredient.new_record? %>
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Ingredient
+        <% else %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Ingredient
+        <% end %>
+      <% end %>
     </div>
   </div>
 <% end %>
+
+
+<!--  -->
