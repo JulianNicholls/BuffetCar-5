@@ -99,7 +99,7 @@ footer {
 }
 
 .list-summary {
-  min-height: 140px;
+  min-height: 130px;
 }
 
 .recipe-list {
@@ -162,3 +162,11 @@ span.ingredient.badge a {
   }
 }
 
+#likes {
+  // text-align: right;
+  margin-bottom: 0.5em;
+
+  a {
+    color: $link-colour;
+  }
+}
