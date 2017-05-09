@@ -11,9 +11,11 @@
         <%= link_to gravatar_for(chef, size: 120), chef %>
       </section>
     </div>
-    <div class="col-sm-6 well list-summary">
-      <h3 class="text-center"><%= link_to chef.name, chef %></h3>
-      <p class="text-center"><%= pluralize(chef.recipes.size, 'recipe') if chef.recipes.any? %></p>
+    <div class="col-sm-6 well well-sm list-summary">
+      <h3 class="text-center">
+        <%= link_to chef.name, chef %>
+        <small><%= pluralize(chef.recipes.size, 'recipe') if chef.recipes.any? %></small>
+      </h3>
       <% if logged_in? && current_chef.admin? && !chef.admin? %>
         <div class="pull-right chef-actions">
           <%= link_to chef_path(chef), method: :delete,
