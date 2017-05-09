@@ -1,0 +1,8 @@
+<span>
+  <%= link_to like_recipe_path(object, like: true), method: :post do %>
+    <%= object.upvotes %> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+  <% end %>
+  <%= link_to like_recipe_path(object, like: false), method: :post do %>
+    <%= object.downvotes %> <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+  <% end %>
+</span>

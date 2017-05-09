@@ -30,6 +30,10 @@
     <hr />
 
     <div class="recipe-actions">
+      <div id="likes">
+        <%= render 'likes', object: @recipe %>
+      </div>
+
       <% if logged_in? && (current_chef.admin? || current_chef == @recipe.chef) %>
         <%= link_to edit_recipe_path(@recipe),
                     class: 'btn btn-xs btn-primary btn-custom' do %>

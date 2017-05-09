@@ -17,6 +17,9 @@
       <% end %>
       <% if logged_in? && (current_chef.admin? || current_chef == recipe.chef) %>
         <div class="pull-right recipe-actions" >
+          <div id="likes">
+            <%= render 'likes', object: recipe %>
+          </div>
           <%= link_to edit_recipe_path(recipe),
                       class: 'btn btn-xs btn-primary btn-custom' do %>
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Recipe

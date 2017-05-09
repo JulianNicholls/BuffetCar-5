@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:edit, :update, :destroy]
-  before_action :require_user, except: [:index, :show]
+  before_action :set_recipe, only: [:edit, :update, :destroy, :like]
+  before_action :require_user, except: [:index, :show, :like]
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_user_like, only: :like
 
   def index
     @recipes = Recipe.includes(:ingredients, :recipe_ingredients, :chef, :comments).paginate page: params[:page], per_page: 5
@@ -48,6 +49,18 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def like
+    like = Like.create upvote: params[:like], chef: current_chef, recipe: @recipe
+
+    if like.valid?  # Chef hasn't voted on this one yet
+      flash[:success] = "Your vote was registered"
+    else
+      flash[:danger] = "You can only vote once on a recipe"
+    end
+
+    redirect_to :back
+  end
+
   private
 
   def recipe_params
@@ -62,6 +75,13 @@ class RecipesController < ApplicationController
     unless current_chef.admin? || current_chef == @recipe.chef
       flash[:danger] = 'You can only edit your own recipes'
       redirect_to recipes_path
+    end
+  end
+
+  def require_user_like
+    unless logged_in?
+      flash[:danger] = "You must be logged in to vote"
+      redirect_to :back
     end
   end
 end
